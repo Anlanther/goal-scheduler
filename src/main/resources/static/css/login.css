@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+/* General
+------------------------------------------- */
+body {
+	font-family: sans-serif;
+	background-size: cover;
+	color: #000;
+	background: #d9ead3;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+h1 {
+	text-align: center;
+	font-size: 40px;
+}
+
+h2 {
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+	font-size: 22px;
+}
+
+a:link {
+	text-decoration: underline;
+	color: #fff;
+}
+
+a:hover {
+	color: #e06666;
+}
+
+a:visited {
+	color:#e7e7e7;
+	text-decoration: underline;
+}
+
+/* Header
+------------------------------------------- */
+.navBar {
+	background-color: #152238;
+	color: #fff;
+	padding: 10px 50px 10px;
+	text-align: right;
+}
+
+/* LoginBox
+------------------------------------------- */
+.loginBox {
+	width: 320px;
+	height: 420px;
+	background: #134f5c;
+	color: #fff;
+	top: 55%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+	padding: 50px 30px;
+	border-radius: 20px;
+}
+
+.loginBox p {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+
+.loginBox input {
+	width: 100%;
+	margin-bottom: 20px;
+	float: middle;
+}
+
+.loginBox input[type="text"], input[type="password"] {
+	border: none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 25px;
+	color: #fff;
+	font-size: 16px;
+}
+
+.loginBox input[type="submit"] {
+	border: none;
+	outline: none;
+	height: 40px;
+	background: #e06666;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 20px;
+}
+
+.loginBox input[type="submit"]:hover {
+	cursor: pointer;
+	background: #e95a5a;
+	color: #000;
+}
+
+.loginBox a {
+	text-decoration: none;
+	font-size: 12px;
+	line-height: 20px;
+	color: darkgrey;
+}
+
+.loginBox a:hover {
+	color: #e95a5a;
+}
+
+/* Select & Options
+------------------------------------------- */
+.select {
+	position: relative;
+	width: 260px;
+	height: 30px;
+	border-radius: 5px;
+	border: none;
+	text-transform: capitalize;
+	background: #ffff;
+	text-align: left;
+	padding: 0 10px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.space {
+	height: 15px;
+}
+
+/* Footer
+------------------------------------------- */
+.footer {
+	padding: 50px;
+	background-color: #152238;
+	position: relative;
+	color: #fff;
+}
+
+.footerDetails {
+	position: absolute;
+	bottom: 0;
+}

@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+/* General
+------------------------------------------- */
+body {
+	font-family: sans-serif;
+	background-size: cover;
+	color: #000;
+	background: #d9ead3;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+h1 {
+	text-align: center;
+	font-size: 32px;
+	padding-top: 20px;
+}
+
+h2, h3, h4, h5, h6, p {
+	margin-top: 0;
+	padding-right: 20px;
+	padding-left: 15px;
+}
+
+a:link {
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #e06666;
+}
+
+a:visited {
+	text-decoration: underline;
+}
+
+/* navButton
+------------------------------------------- */
+.navButton {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	overflow: hidden;
+	outline: none;
+	color: #fff;
+	text-decoration: underline;
+	padding: 3px;
+	font-size: 14px;
+}
+
+.navButton:hover {
+	color: #e06666;
+}
+
+/* Header
+------------------------------------------- */
+.navBar {
+	background-color: #152238;
+	color: #fff;
+	padding: 10px 50px 10px;
+	text-align: right;
+	top: 0px;
+}
+
+.navBar input[type="submit"]{
+  border: none;
+	outline: none;
+	height: 30px;
+	background: #152238;
+	color: #fff;
+	font-size: 14px;
+	border-radius: 20px;
+}
+
+.navBar input[type="submit"]:hover {
+	cursor: pointer;
+	color: #e06666;
+}
+
+/* content
+------------------------------------------- */
+.content {
+	padding: 50px 50px;
+	width: 80%;
+	background-color: #FFF;
+	height: auto;
+	margin: 0 auto;
+	position: relative;
+	border-radius: 0 0 5px 5px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.10);
+}
+/* inputTable
+------------------------------------------- */
+.inputTable {
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.95em;
+	min-width: 800px;
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.inputTable thead tr {
+	background-color: #45818e;
+	color: #fff;
+	text-align: left;
+}
+
+.inputTable td {
+	padding: 12px 15px;
+}
+
+.inputTable tbody tr {
+	border-bottom: 1px solid #dddd;
+}
+
+.inputTable tbody tr:nth-of-type(even) {
+	background-color: #f3f3f3;
+}
+
+.submitDate {
+	margin: 0;
+  	position: absolute;
+  	top: 50%;
+  	-ms-transform: translateY(-50%);
+  	transform: translateY(-50%);
+}
+
+/* summaryTable
+------------------------------------------- */
+.summaryTable {
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.95em;
+	min-width: 800px;
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.summaryTable thead tr {
+	background-color: #e06666;
+	color: #fff;
+	text-align: left;
+}
+
+.summaryTable td {
+	padding: 12px 15px;
+}
+
+.summaryTable tbody tr {
+	border-bottom: 1px solid #dddd;
+}
+
+.summaryTable tbody tr:nth-of-type(even) {
+	background-color: #f3f3f3;
+}
+
+.summaryTable tbody tr:last-of-type {
+	border-bottom: 2px solid #e06666;
+}
+
+.availableButton {
+	height: 30px;
+	font-size: 14px;
+}
