@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th=" http://www.thymeleaf.org ">
+<head>
+<meta charset="UTF-8">
+<title>GoalSetter</title>
+<link href="css/login.css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="containter">
+		<div class="header">
+			<div class="navBar">
+				<p>
+					<a th:href="@{/}">Login</a> <br> <a th:href="@{/register}">Register</a>
+				</p>
+			</div>
+			<h1>Welcome to GoalSetter</h1>
+			<div th:if="${notUniqueUsername} == 1">
+				<h2>That Username Is Already Taken. Please Input Another.</h2>
+			</div>
+		</div>
+
+		<div class="loginBox">
+			<h2>Register</h2>
+			<form th:action="@{register}" th:object="${user}" method="post">
+				<p>Unique Username</p>
+				<input type="text" th:field="*{username}"
+					placeholder="Enter Username" required /> <br>
+				<p>Name</p>
+				<input type="text" th:field="*{name}" placeholder="Enter name"
+					required /> <br>
+				<p>Member Status</p>
+				<select class="select" id="memberStatus" th:field="*{projectLeader}">
+					<option class="options" value="true">Leader</option>
+					<option class="options" value="false">Member</option>
+				</select>
+				<div class="space"></div>
+				<p>Unique Password</p>
+				<input type="password" th:field="*{password}"
+					placeholder="Enter Password" required /> <br> <input
+					type="submit" name="Submit" /> <br>
+			</form>
+		</div>
+	</div>
+
+	<div th:if="${invalidFlag} == 1">Invalid user credentials. Please
+		try again</div>
+
+</body>
+</html>

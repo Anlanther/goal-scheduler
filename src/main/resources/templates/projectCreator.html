@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th=" http://www.thymeleaf.org ">
+<head>
+<meta charset="UTF-8">
+<title>GoalSetter: Project Creator</title>
+<link href="css/generic.css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="containter">
+		<div class="header">
+			<div class="navBar">
+				<form method="POST" th:action="logout">
+					<input type="submit" name="logout" value="Logout" />
+				</form>
+				<form method="POST" th:action="delete">
+					<input type="submit" name="delete" value="Delete All" />
+				</form>
+			</div>
+		</div>
+
+
+		<div class="content">
+			<h1>Project Creator</h1>
+			<h2>Set your goals</h2>
+			<p>Give each goal a name and set the approximate amount of hours
+				needed to complete each goal.</p>
+			<br>
+
+			<form method="POST" th:object="${info}" th:action="projectCreatorAdd">
+				<table class="inputTable">
+					<thead>
+						<tr>
+							<td>Goal Name</td>
+							<td>Approximate Hours to Complete</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" th:field="*{projectGoal}"
+								placeholder="Enter goal title" /></td>
+							<td><input type="number" th:field="*{goalDuration}"
+								placeholder="Enter approximate hours" /></td>
+							<td><button type="submit">Submit</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+
+			<br>
+			<form method="POST" th:action="projectCreator">
+			<table class="summaryTable">
+				<thead>
+					<tr>
+						<td>Goal Name</td>
+						<td>Approximate Hours to Complete</td>
+						<td>Delete Goal</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="goal : ${allGoals}">
+						<td th:text="${goal.projectGoal}" />
+						<td th:text="${goal.goalDuration}" />
+						<td><button th:name="button" th:action="submit" th:value="${goal.goalId}">Delete</button></td>
+					</tr>
+				</tbody>
+			</table>
+			</form>
+
+			<a th:href="@{/selectGoal}">Select Goal for Available Times >></a>
+			<div th:if="${projectsExist} == 1">
+				<a th:href="@{/projectHome}">Go to Project Home >></a>
+			</div>
+
+
+
+		</div>
+	</div>
+</body>
+</html>

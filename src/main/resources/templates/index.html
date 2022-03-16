@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th=" http://www.thymeleaf.org ">
+<head>
+<meta charset="UTF-8">
+<title>GoalSetter: Home</title>
+<link href="css/login.css" rel="stylesheet">
+</head>
+<body>
+	<div class="containter">
+		<div class="header">
+			<div class="navBar">
+				<p>
+					<a th:href="@{/}">Login</a> <br> <a th:href="@{/register}">Register</a>
+				</p>
+			</div>
+			<h1>Welcome to GoalSetter</h1>
+			<h2>Start Planning Your Project</h2>
+		</div>
+
+		<div class="loginBox">
+			<h2>Login</h2>
+			<form method="POST" action="login">
+				<p>Username</p>
+				<input type="text" name="username" />
+				<p>Password</p>
+				<input type="password" name="password" /> <input type="submit"
+					name="login" /> <a href="register">Register As New User</a>
+			</form>
+
+			<div th:if="${invalidFlag} == 1">Invalid user credentials.<br>
+				Please register or add credentials again try again.</div>
+		</div>
+
+
+	</div>
+
+</body>
+</html>

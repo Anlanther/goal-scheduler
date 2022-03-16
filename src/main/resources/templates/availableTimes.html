@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html xmlns:th=" http://www.thymeleaf.org ">
+<head>
+<meta charset="UTF-8">
+<title>GoalSetter: Availability</title>
+<style>
+/* General
+------------------------------------------- */
+body {
+	font-family: sans-serif;
+	background-size: cover;
+	color: #000;
+	background: #d9ead3;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+h1 {
+	text-align: center;
+	font-size: 32px;
+	padding-top: 20px;
+}
+
+h2, h3, h4, h5, h6, p {
+	margin-top: 0;
+	padding-right: 20px;
+	padding-left: 15px;
+}
+
+a:link {
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #e06666;
+}
+
+a:visited {
+	text-decoration: underline;
+}
+
+/* navButton
+------------------------------------------- */
+.navButton {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	overflow: hidden;
+	outline: none;
+	color: #fff;
+	text-decoration: underline;
+	padding: 3px;
+	font-size: 14px;
+}
+
+.navButton:hover {
+	color: #e06666;
+}
+
+/* Header
+------------------------------------------- */
+.navBar {
+	background-color: #152238;
+	color: #fff;
+	padding: 10px 50px 10px;
+	text-align: right;
+	top: 0px;
+}
+
+.navBar input[type="submit"]{
+  border: none;
+	outline: none;
+	height: 30px;
+	background: #152238;
+	color: #fff;
+	font-size: 14px;
+	border-radius: 20px;
+}
+
+.navBar input[type="submit"]:hover {
+	cursor: pointer;
+	color: #e06666;
+}
+
+/* content
+------------------------------------------- */
+.content {
+	padding: 50px 50px;
+	width: 80%;
+	background-color: #FFF;
+	height: auto;
+	margin: 0 auto;
+	position: relative;
+	border-radius: 0 0 5px 5px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.10);
+}
+/* inputTable
+------------------------------------------- */
+.inputTable {
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.95em;
+	min-width: 800px;
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.inputTable thead tr {
+	background-color: #45818e;
+	color: #fff;
+	text-align: left;
+}
+
+.inputTable td {
+	padding: 12px 15px;
+}
+
+.inputTable tbody tr {
+	border-bottom: 1px solid #dddd;
+}
+
+.inputTable tbody tr:nth-of-type(even) {
+	background-color: #f3f3f3;
+}
+
+.submitDate{
+ 	position: absolute;
+ 	left: 10%;
+  	top: 300px;
+}
+
+/* summaryTable
+------------------------------------------- */
+.summaryTable {
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.95em;
+	min-width: 800px;
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.summaryTable thead tr {
+	background-color: #e06666;
+	color: #fff;
+	text-align: left;
+}
+
+.summaryTable td {
+	padding: 12px 15px;
+}
+
+.summaryTable tbody tr {
+	border-bottom: 1px solid #dddd;
+}
+
+.summaryTable tbody tr:nth-of-type(even) {
+	background-color: #f3f3f3;
+}
+
+.summaryTable tbody tr:last-of-type {
+	border-bottom: 2px solid #e06666;
+}
+
+.availableButton {
+	font-size: 14px;
+	margin: 5px;
+}
+</style>
+</head>
+<body>
+
+
+	<div class="containter">
+		<div class="header">
+			<div class="navBar">
+				<form method="POST" th:action="@{/logout}">
+					<input type="submit" name="logout" value="Logout" />
+				</form>
+				<form method="POST" th:action="@{/delete}">
+					<input type="submit" name="delete" value="Delete All" />
+				</form>
+			</div>
+		</div>
+
+		<div class="content">
+			<h1>Available Time Selection</h1>
+			<h2>When are you available?</h2>
+			<p>Input all of the times you are available for each goal. You
+				cannot input a date that is more than 10 years from the current
+				date.</p>
+			<br>
+
+
+			<form method="POST"
+				th:action="@{/assignAvailableTimes/{id}(id=${id})}">
+				<table class="inputTable">
+					<thead>
+						<tr>
+							<td>Available From</td>
+							<td>Available To</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="datetime-local" id="meeting-time"
+								name="availableFrom" th:value="${currentDate}"
+								th:min="${currentDate}" th:max="${currentDatePlusTenYears}"></td>
+							<td><input type="datetime-local" id="meeting-time"
+								name="availableTo" th:value="${currentDate}"
+								th:min="${currentDate}" th:max="${currentDatePlusTenYears}"></td>
+						</tr>
+					</tbody>
+				</table>
+				<button class ="submitDate" type="submit">Submit</button>
+			</form>
+
+			<table class="summaryTable">
+				<thead>
+					<tr>
+						<td>Goal Name</td>
+						<td>Existing Available Times</td>
+						<td>Delete One Available Time</td>
+						<td>Delete All Available Times</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="goal : ${allGoals}">
+						<td th:text="${goal.projectGoal}" />
+						<td>
+							<p th:each="availableTime: ${goal.available}">
+								<span th:text="${availableTime.toString()}"> </span>
+							</p>
+						</td>
+						<td>
+							<form th:each="availableTime: ${goal.available}" method="POST"
+								th:action="@{/deleteAvailableTime}">
+								<button class="availableButton" th:name="button" th:action="submit"
+									th:value="${availableTime.availableId}">Delete</button>
+							</form>
+						</td>	
+							
+						<td>
+							<form method="POST" th:action="@{/deleteAllAvailableTimes}">
+								<button th:name="button" th:action="submit"
+									th:value="${goal.goalId}">Delete</button>
+							</form>
+						</td>
+						
+					</tr>
+				</tbody>
+			</table>
+
+			<a th:href="@{/selectGoal}">Select Another Goal for Available
+				Times >></a>
+			<div th:if="${projectsExist} == 1">
+				<a th:href="@{/projectHome}">Go to Project Home >></a>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

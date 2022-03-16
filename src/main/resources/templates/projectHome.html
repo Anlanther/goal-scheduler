@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th=" http://www.thymeleaf.org ">
+<head>
+<meta charset="UTF-8">
+<title>GoalSetter: Project Home</title>
+<link href="css/generic.css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="containter">
+		<div class="header">
+			<div class="navBar">
+				<form method="POST" th:action="logout">
+					<input type="submit" name="logout" value="Logout" />
+				</form>
+				<form method="POST" th:action="delete">
+					<input type="submit" name="delete" value="Delete All" />
+				</form>
+			</div>
+		</div>
+
+		<div class="content">
+			<h1>Project Home</h1>
+			
+			<h2>Goal Summary Table</h2>
+			<table class="summaryTable">
+				<thead>
+				<tr>
+					<td>Goal Name</td>
+					<td>Approximate Hours to Complete</td>
+					<td>Member Name</td>
+					<td>Available From</td>
+					<td>Available To</td>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="goal : ${allGoals}">
+					<td th:text="${goal.projectGoal}" />
+					<td th:text="${goal.goalDuration}" />
+					<td>
+						<p th:each="available : ${goal.available}"
+							th:text="${available.member.name}" />
+					</td>
+					<td>
+						<p th:each="available : ${goal.available}"
+							th:text="${available.availableFrom}" />
+					</td>
+					<td>
+						<p th:each="available : ${goal.available}"
+							th:text="${available.availableTo}" />
+					</td>
+				</tr>
+				</tbody>
+			</table>
+
+			<a th:href="@{/selectGoal}">Select Goal for Available Times >></a>
+
+		</div>
+	</div>
+
+</body>
+</html>

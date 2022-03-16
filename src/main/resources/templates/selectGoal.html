@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th=" http://www.thymeleaf.org ">
+<head>
+<meta charset="UTF-8">
+<title>GoalSetter: Select Goal</title>
+</head>
+<link href="css/generic.css" rel="stylesheet">
+<body>
+
+	<div class="containter">
+		<div class="header">
+			<div class="navBar">
+				<form method="POST" th:action="logout">
+					<input type="submit" name="logout" value="Logout" />
+				</form>
+				<form method="POST" th:action="delete">
+					<input type="submit" name="delete" value="Delete All" />
+				</form>
+			</div>
+		</div>
+
+		<div class="content">
+			<h1>Select Goal</h1>
+			<h2>Assign available times</h2>
+			<p>Select the goal you want to assign available times to.</p>
+
+			<table class="summaryTable">
+				<thead>
+					<tr>
+						<td>Goal Name</td>
+						<td>Existing Available Times</td>
+						<td>Assign Available Times</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="goal : ${allGoals}">
+						<td th:text="${goal.projectGoal}" />
+						<td>
+							<p th:each="availableTime: ${goal.available}">
+								<span th:text="${availableTime.toString()}"> </span>
+							</p>
+						<td><a 
+							th:href="@{/assignAvailableTimes/{id}(id=${goal.goalId})}">
+								Assign Time </a></td>
+					</tr>
+				</tbody>
+			</table>
+
+
+			<a th:href="@{/projectCreator}">Go back to Project Creator >></a>
+			<div th:if="${projectsExist} == 1">
+				<a th:href="@{/projectHome}">Go to Project Home >></a>
+			</div>
+			
+
+		</div>
+	</div>
+</body>
+</html>
