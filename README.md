@@ -6,14 +6,12 @@ Once at least one goal is set, users are able to list out their available times 
 
 Users are able to reset the app whenever they have a new project, allowing for a new leader and goals to be set.
 
-## Technologies & Languages Used
-- Java
-- HTML & CSS
-- Spring
-- JPA
-- Hibernate
-- mySQL
-
 ## Project Key Learnings
+- How to capture and persist data in a database
+- How to connect front-end UI with backend database
+- How to work with Java Dates
+- Differences between GET and POST requests
 
 ## Possible Future Additions
+- Use of Bootstrap for UI
+- Combining and converting available times of members into a consolidated visual representation
